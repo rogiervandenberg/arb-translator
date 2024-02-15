@@ -76,7 +76,7 @@ Add a new string to your template ARB file, e.g. in ${FLUTTER_PROJECT}/lib/l10n,
 
 Make sure you have at least one other ARB bundle file (another language) in the same directory, e.g. app_de.arb, app_es.arb, etc.
 
-Run the executable:
+### Run the executable
 
 ```bash
 ./make_translations
