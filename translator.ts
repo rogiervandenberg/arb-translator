@@ -18,12 +18,21 @@ export class Translator {
       process.exit();
     }
 
+    const keyLoaded = await this.checkAPIkey();
+    if (!keyLoaded) {
+      process.exit();
+    }
+
     const arbFiles = await readdir(this.arbDir!);
     const targetFiles = arbFiles.filter((f) => f !== this.templateFile!);
 
     for (const file of targetFiles) {
       await this.processTranslationFile(file);
     }
+
+    console.log(
+      "All translations are complete and can be found in " + this.arbDir
+    );
   }
 
   private async processTranslationFile(file: string) {
@@ -65,6 +74,31 @@ export class Translator {
     }
   }
 
+  private async checkAPIkey(): Promise<boolean> {
+    const file = Bun.file(
+      path.join(this.flutterProjectPath!, "translations.yaml")
+    );
+
+    let exists = await file.exists(); // boolean;
+    if (!exists) {
+      console.log(
+        "API key file not found, please create translations.yaml in the root of your project with the google-translate-key."
+      );
+      return false;
+    }
+
+    const text = await file.text();
+    const config = load(text) as Record<string, any>;
+
+    if (!config["google-translate-key"]) {
+      console.log("No Google API key found in the config file.");
+      return false;
+    }
+
+    this.googleAPIKey = config["google-translate-key"];
+    return true;
+  }
+
   private async checkConfig(): Promise<boolean> {
     const file = Bun.file(this.configPath);
 
@@ -76,11 +110,6 @@ export class Translator {
 
     const text = await file.text();
     const l10nConfig = load(text) as Record<string, any>;
-
-    if (!l10nConfig["google-translate-key"]) {
-      console.log("No Google API key found");
-      return false;
-    }
 
     if (!l10nConfig["arb-dir"]) {
       console.log("No arb dir found");

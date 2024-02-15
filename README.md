@@ -26,7 +26,7 @@ This CLI aims to solve this problem by using the Google Translate API to transla
 Firstly, you need [bun](https://bun.sh) to run this project. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
 ```bash
-bun build ./cli.ts --compile --outfile flutter-create-translations
+bun build ./cli.ts --compile --outfile make_translations
 ```
 
 Move the `flutter-create-translations` executable to your Flutter project and add the file to your .gitignore.
@@ -48,14 +48,13 @@ You can copy the key now.
 
 ### Step 3: Add your API key
 
-Add a new `google-translate-key`-key to your`l10n.yaml` file, like so:
+In the root of your project, create a new `translations.yaml` file (`${FLUTTER_PROJECT}/translations.yaml`) and add a new `google-translate-key`-key to this file with your API key, like so:
 
 ```yaml
-arb-dir: lib/l10n
-template-arb-file: intl_en.arb
-..
 google-translate-key: "superSecretAPIKey"
 ```
+
+You probably want to add the `translations.yaml` file to your `.gitignore`.
 
 ### Step 4: Run the executable
 
@@ -113,5 +112,5 @@ bun run cli.ts
 ## Build
 
 ```bash
-bun build ./cli.ts --compile --outfile build/flutter-create-translations
+bun build ./cli.ts --compile --outfile make_translations
 ```
