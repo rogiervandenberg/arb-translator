@@ -31,7 +31,7 @@ export class Translator {
     }
 
     console.log(
-      "All translations are complete and can be found in " + this.arbDir
+      "\nAll translations are complete and can be found in " + this.arbDir
     );
   }
 
@@ -60,7 +60,7 @@ export class Translator {
 
     // write the json back into the arb file
     await Bun.write(arbFile, JSON.stringify(translations, null, 2));
-    console.log(`Translations for ${file} are complete`);
+    console.log(`Translations for ${file} are complete\n`);
   }
 
   private deriveLocaleFromFileName(file: string): string {
