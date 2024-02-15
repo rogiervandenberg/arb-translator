@@ -2,6 +2,8 @@
 
 A simple CLI to translate ARB files ([App Resource Bundle](https://github.com/google/app-resource-bundle) files (.arb)) using Google Translate API.
 
+![bulk-translation-demo](https://raw.githubusercontent.com/rogiervandenberg/arb-translator/master/images/demo.gif)
+
 Based on the settings in your `l10n.yaml` file, the CLI will translate not yet translated keys in your template ARB file, and save them in the ARB directory that is specified in the `l10n.yaml` file, for each language.
 
 Each time you run the CLI, it will only translate the keys that are not yet translated. So you can run it multiple times to keep your translations up to date automatically as you add new keys to your template ARB file.
