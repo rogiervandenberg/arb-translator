@@ -14,14 +14,17 @@ I am working on a Flutter app. Following the [official documentation](https://fl
 
 This CLI aims to solve this problem by using the Google Translate API to translate the ARB files automatically and effortlessly.
 
+## Setup, TL;DR
+
+- Compile this project and add the built executable to your Flutter project folder
+- Create a Google Cloud project and enable the Translate API, with an API key
+- Create a new `translations.yaml` file in your project folder and add the API key to it
+
 ## Usage, TL;DR
 
-- Compile this project and add the executable to your Flutter project
-- Create a Google Cloud project and enable the Translate API, with an API key
-- Add the API key to your `l10n.yaml` file
-- Add a new text string to your project and run the executable
+Add a new text string to your project and run the executable
 
-## Usage, step by step
+## Setup, step by step
 
 ### Step 1: Compile the project and add the executable to your Flutter project
 
@@ -58,7 +61,7 @@ google-translate-key: "superSecretAPIKey"
 
 You probably want to add the `translations.yaml` file to your `.gitignore`.
 
-### Step 4: Run the executable
+## Usage
 
 Add a new string to your template ARB file, e.g. in ${FLUTTER_PROJECT}/lib/l10n, in the file app_en.arb template file, you add:
 
@@ -71,12 +74,12 @@ Add a new string to your template ARB file, e.g. in ${FLUTTER_PROJECT}/lib/l10n,
 }
 ```
 
-Make sure you have at least one other ARB bundle file in the same directory, e.g. app_de.arb, app_es.arb, etc.
+Make sure you have at least one other ARB bundle file (another language) in the same directory, e.g. app_de.arb, app_es.arb, etc.
 
 Run the executable:
 
 ```bash
-./flutter-create-translations
+./make_translations
 ```
 
 You'll see that the translations will be **automagically** added to your German and Spanish files:
