@@ -1,0 +1,15 @@
+{
+  "name": "arb-translator",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
