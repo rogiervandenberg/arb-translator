@@ -16,7 +16,7 @@ This CLI aims to solve this problem by using the Google Translate API to transla
 
 ## Usage, TL;DR
 
-- Compile the project and add the executable to your Flutter project
+- Compile this project and add the executable to your Flutter project
 - Create a Google Cloud project and enable the Translate API, with an API key
 - Add the API key to your `l10n.yaml` file
 - Add a new text string to your project and run the executable
@@ -31,7 +31,7 @@ Firstly, you need [bun](https://bun.sh) to run this project. [Bun](https://bun.s
 bun build ./cli.ts --compile --outfile make_translations
 ```
 
-Move the `flutter-create-translations` executable to your Flutter project and add the file to your .gitignore.
+Move the `make_translations` executable to your Flutter project and add the file to your .gitignore.
 
 ### Step 2: Create a Google Cloud project and enable the Translate API
 
