@@ -24,7 +24,15 @@ export class Translator {
     }
 
     const arbFiles = await readdir(this.arbDir!);
-    const targetFiles = arbFiles.filter((f) => f !== this.templateFile!);
+    const arbFileRegex = new RegExp(/.*\.arb$/);
+    const arbFilesFiltered = arbFiles.filter((f) => arbFileRegex.test(f));
+    if (arbFilesFiltered.length === 0) {
+      console.log("No arb files found in " + this.arbDir);
+      process.exit();
+    }
+    const targetFiles = arbFilesFiltered.filter(
+      (f) => f !== this.templateFile!
+    );
 
     for (const file of targetFiles) {
       await this.processTranslationFile(file);
